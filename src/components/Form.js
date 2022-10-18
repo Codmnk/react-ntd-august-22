@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+// import { v4 as uuidv4 } from "uuid";
+import { reandomStr } from "../utils/randomGenerator";
 
 export const Form = ({ taskEntry }) => {
   const [data, setData] = useState({});
@@ -8,7 +10,7 @@ export const Form = ({ taskEntry }) => {
 
     setData({
       ...data,
-      [name]: value,
+      [name]: name === "hr" ? +value : value,
       type: "entry",
     });
   };
@@ -16,7 +18,7 @@ export const Form = ({ taskEntry }) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
 
-    taskEntry(data);
+    taskEntry({ ...data, _id: reandomStr() });
   };
 
   return (
