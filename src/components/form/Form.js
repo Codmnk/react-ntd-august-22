@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-// import { v4 as uuidv4 } from "uuid";
-import { reandomStr } from "../utils/randomGenerator";
+import "./form.css";
 
+const initnalState = {
+  task: "",
+  hr: "",
+};
 export const Form = ({ taskEntry }) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(initnalState);
 
   const handleOnChange = (e) => {
     const { value, name } = e.target;
@@ -15,19 +18,20 @@ export const Form = ({ taskEntry }) => {
     });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-
-    taskEntry({ ...data, _id: reandomStr() });
+    taskEntry(data);
+    setData(initnalState);
   };
 
   return (
-    <div>
+    <div className="form">
       <form onSubmit={handleOnSubmit}>
         <div className="row mt-3 g-2">
           <div className="col-md-6">
             <input
               name="task"
+              value={data.task}
               type="text"
               className="form-control"
               placeholder=""
@@ -38,6 +42,7 @@ export const Form = ({ taskEntry }) => {
           <div className="col-md-3">
             <input
               name="hr"
+              value={data.hr}
               type="number"
               className="form-control"
               min="1"

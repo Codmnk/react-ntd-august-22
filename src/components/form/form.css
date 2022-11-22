@@ -1,0 +1,6 @@
+.form {
+  background: rgba(216, 240, 136, 0.762);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: -5px 5px 10px rgba(128, 128, 128, 0.483);
+}
